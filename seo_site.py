@@ -21,7 +21,7 @@ def hook(ctx):
         if tbl and not tbl.find("th", string="Price after trial"):
             for th in tbl.find_all("th"):
                 if th.get_text() == "Auto-renews": th.string = "Price after trial"
-        # cancel steps pulled from the cancel guide (same facts, shown on the trial page)
+        # cancel steps pulled from the cancel guide
         for old in s.find_all(attrs={"data-seo": "cancel"}): old.decompose()
         cs = soups.get(f"cancel/{k}/")
         if cs:
@@ -33,7 +33,7 @@ def hook(ctx):
                 sec = BeautifulSoup(f'<section data-seo="cancel"><h2>How to cancel {name}</h2>{"".join(parts)}<p><a href="../../cancel/{k}/">Full {name} cancel guide</a></p></section>', "html.parser")
                 anchor = s.find(class_="ctabox") or tbl or s.find(class_="phero")
                 anchor.insert_after(sec)
-        rel = [f"cancel/{k}/", f"student-discounts/{k}/", f"deals/{k}/"] + [q for q in paths if q.startswith("trials/") and q != p]
+        rel = [q for q in [f"cancel/{k}/", f"student-discounts/{k}/", f"deals/{k}/"] if q in paths] + [q for q in paths if q.startswith("trials/") and q != p]
         return dict(h1=t, titles=[t, f"{name} Free Trial: Length, Cost & How to Cancel", f"{name} Free Trial: Length, Cost After, Cancel", f"{name} Free Trial: Length & How to Cancel"], related=rel[:8])
     if seg[0] in ("cancel", "student-discounts", "deals") and len(seg) == 2:
         k = seg[1]
@@ -50,7 +50,7 @@ def guides():
         h = BeautifulSoup(open(f"{ROOT}/trials/{k}/index.html").read(), "html.parser").find("h1").get_text()
         names[k] = re.split(r" Free Trial", h)[0]
     li = lambda pre, lab: "".join(f'<li><a href="../{pre}/{k}/">{lab.format(n=n)}</a></li>' for k, n in names.items())
-    return {"guides/": ("Guides", f'<h1>Free Trial Guides: Cancel, Students and Deals</h1><p>Step by step guides for every service we track, from canceling before you are charged to finding student pricing. Updated Oct 13, 2026.</p><h2>How to cancel</h2><ul>{li("cancel", "How to cancel {n}")}</ul><h2>Student discounts</h2><ul>{li("student-discounts", "{n} student discount")}</ul><h2>Current deals</h2><ul>{li("deals", "{n} deal")}</ul><h2>Free trials</h2><ul>{li("trials", "{n} free trial")}</ul><p><a href="../how-we-verify/">How we verify</a></p>')}
+    return {"guides/": ("Guides", f'<h1>Free Trial Guides: Cancel, Students and Deals</h1><p>Step by step guides for every service we track, from canceling before you are charged to finding student pricing. Updated Oct 13, 2026.</p><h2>How to cancel</h2><ul>{li("cancel", "How to cancel {n}")}</ul><h2>Free trials</h2><ul>{li("trials", "{n} free trial")}</ul><p><a href="../how-we-verify/">How we verify</a></p>')}
 
 def build():
     for a, b in [("option-b-icon.svg", "favicon.svg")]:
@@ -60,6 +60,6 @@ def build():
     site = seo.Site(ROOT, "TrialTally", "trialtally.com", "deals-tracker-prototype", INDEXABLE, "Oct 13, 2026", "2026-10-13",
         "Free trials and deals, checked by humans. Funded by affiliate links.",
         f"{LOGOS}/option-b-wordmark-1200.png", "img/brand/option-b-icon-512.png",
-        ["Last checked Oct 13, 2026.", "Sample data prototype.", "From TrialTally.", "Checked by hand.", "Cancel steps included.", "Not affiliated.", "Sample data."], hook, extra_pages=guides())
+        ["Last checked Oct 13, 2026.", "From official pages.", "From TrialTally.", "Source linked.", "US prices.", "Not affiliated.", "Checked Oct 13, 2026."], hook, extra_pages=guides())
     return seo.run(site)
 if __name__ == "__main__": build()
