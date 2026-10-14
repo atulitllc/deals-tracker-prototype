@@ -18,7 +18,6 @@ def page(path,title,desc,crumbs,body):
 <link rel="icon" href="{r}img/brand/option-b-icon.svg" type="image/svg+xml"><link rel="stylesheet" href="{r}assets/style.css?v=20261013logos">
 <script type="application/ld+json">{json.dumps(org)}</script><script type="application/ld+json">{json.dumps(bl)}</script>
 </head><body>
-<div class="sample">Prototype · Real trial facts from official pages, checked {CHECKED} · Not indexed</div>
 <header class="top"><div class="wrap nav"><a class="brand" href="{r}"><img src="{r}img/brand/option-b-wordmark.svg" alt="TrialTally" height="34"></a>
 <nav>{nav}<a href="{r}trials/">{icon("list-checks",16)}All trials</a></nav>{toggle()}</div></header>
 <main class="wrap"><nav class="crumbs" aria-label="Breadcrumb">{cr}</nav>
@@ -71,7 +70,7 @@ EXTRA=""".hsplit{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-ite
 html[data-theme=dark] .sample{background:#1a1e26;color:#c8f560}
 """
 for f in glob.glob("**/index.html",recursive=True)+["404.html"]:
-    h=open(f).read(); h2=h.replace("Prototype · Sample data, not real offers · Not indexed",f"Prototype · Real trial facts from official pages, checked {CHECKED} · Not indexed")
+    h=open(f).read(); h2=re.sub(r'<div class="sample">[^<]*</div>\n?',"",h)
     if h2!=h: open(f,"w").write(h2)
 install_css("assets/style.css",EXTRA)
 import seo_site; seo_site.build()
