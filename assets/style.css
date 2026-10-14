@@ -1,9 +1,9 @@
-:root{--ink:#14110f;--paper:#f6f1e7;--card:#fffdf8;--line:#e4dccb;--lime:#c8f560;--coral:#ff5a36;--mut:#6d655a;--r:18px}
+:root{--ink:#14110f;--paper:#ffffff;--card:#f6f7f9;--line:#e5e7eb;--lime:#c8f560;--coral:#ff5a36;--mut:#6d655a;--r:18px}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Inter,system-ui,sans-serif;padding-bottom:70px}
 a{color:inherit}h1,h2,h3,.brand{font-family:"Bricolage Grotesque",Inter,sans-serif;letter-spacing:-.02em;line-height:1.05}
 .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
 .sample{background:var(--ink);color:var(--lime);text-align:center;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px}
-.top{position:sticky;top:0;z-index:20;background:rgba(246,241,231,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:22px}.brand small{display:block;font:500 11px Inter;color:var(--mut);letter-spacing:0}
 .logo{width:38px;height:38px;border-radius:12px;background:var(--ink);color:var(--lime);display:grid;place-items:center;font-size:18px;transform:rotate(-6deg)}.logo b{color:var(--coral)}
@@ -28,14 +28,14 @@ nav a{text-decoration:none;font-weight:500;font-size:14px;margin-left:18px}.pill
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:40px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:12px;transition:.2s}.card:hover{transform:translateY(-3px);box-shadow:0 18px 36px -24px rgba(20,17,15,.5)}
 .ch{display:flex;gap:12px;align-items:center}.ch h3{margin:0;font-size:20px}.ch h3 a{text-decoration:none}.cat{font-size:12px;color:var(--mut)}
-.len{margin-left:auto;background:var(--lime);font-weight:700;font-size:12px;padding:4px 9px;border-radius:99px;white-space:nowrap}.len.no{background:#eee3d0}
+.len{margin-left:auto;background:var(--lime);font-weight:700;font-size:12px;padding:4px 9px;border-radius:99px;white-space:nowrap}.len.no{background:#f6f7f9}
 .tags{display:flex;flex-wrap:wrap;gap:6px}.t{font-size:12px;border:1px solid var(--line);padding:3px 8px;border-radius:8px}.t.ok{border-color:#00a37a;color:#00805f}
 .deal{display:flex;align-items:baseline;gap:8px}.deal span{font-size:12px;color:var(--mut)}.deal b{font:800 24px "Bricolage Grotesque"}.deal s{color:var(--mut);font-size:14px}
 .cf{display:flex;justify-content:space-between;align-items:center;margin-top:auto}
 .btn{display:inline-block;background:var(--coral);color:#fff;border:0;text-decoration:none;font:700 15px Inter;padding:12px 20px;border-radius:12px;cursor:pointer;box-shadow:0 4px 0 #c43c1d}.btn:active{transform:translateY(2px);box-shadow:0 2px 0 #c43c1d}
 .disc{font-size:12px;color:var(--mut);margin:6px 0 0}.disc.sm{margin:-4px 0 0}
-.ad{background:repeating-linear-gradient(45deg,#ece5d6,#ece5d6 8px,#e6dece 8px,#e6dece 16px);border:1px dashed #b9ad97;border-radius:14px;color:#7a6f5d;font-size:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;position:relative}
-.adtag{position:absolute;top:6px;left:8px;background:#fff;border:1px solid #b9ad97;font-weight:700;font-size:10px;padding:1px 6px;border-radius:4px}
+.ad{background:repeating-linear-gradient(45deg,#f6f7f9,#f6f7f9 8px,#eef0f3 8px,#eef0f3 16px);border:1px dashed #c5cad3;border-radius:14px;color:#6b7280;font-size:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;position:relative}
+.adtag{position:absolute;top:6px;left:8px;background:#fff;border:1px solid #c5cad3;font-weight:700;font-size:10px;padding:1px 6px;border-radius:4px}
 .leader{height:90px;max-width:728px;margin:16px auto 0}.side{width:300px;height:250px;position:sticky;top:90px}.native{min-height:220px}.native b{font-size:15px}
 .sticky{display:none}
 .band{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;background:var(--lime);border-radius:28px;padding:40px;margin:20px 0}.band h2{font-size:clamp(30px,4vw,48px);margin:8px 0}
