@@ -2,7 +2,7 @@
 INDEXABLE gates robots meta and sitemap for the whole site. Run: python3 seo_site.py"""
 import os, re, shutil, sys, copy
 from bs4 import BeautifulSoup
-INDEXABLE = False
+INDEXABLE = True
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, ROOT); import seo
 LOGOS = "/workspace/atulit-logos/trialtally"
